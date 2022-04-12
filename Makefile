@@ -2,9 +2,6 @@ include .env
 
 default: up
 
-help : docker.mk
-	@sed -n 's/^##//p' $<
-
 up:
 	@echo "Starting up containers for for $(PROJECT_NAME)..."
 	docker-compose pull
@@ -28,7 +25,7 @@ ps:
 shell:
 	docker exec -ti -e COLUMNS=$(shell tput cols) -e LINES=$(shell tput lines) $(shell docker ps --filter name='$(PROJECT_NAME)_$(or $(filter-out $@,$(MAKECMDGOALS)), 'php')' --format "{{ .ID }}") sh
 
-log:
+logs:
 	@docker-compose logs -f $(filter-out $@,$(MAKECMDGOALS))
 
 # https://stackoverflow.com/a/6273809/1826109
