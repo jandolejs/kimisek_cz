@@ -42,4 +42,3 @@ services:
 networks:
     web:
         name: kimisek_cz
-        external: true
