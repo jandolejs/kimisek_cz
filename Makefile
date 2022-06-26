@@ -2,6 +2,10 @@ include .env
 
 default: up
 
+pull:
+	@echo "Pulling images for $(PROJECT_NAME)..."
+	docker-compose pull
+
 up:
 	@echo "Starting up containers for for $(PROJECT_NAME)..."
 	docker-compose pull
