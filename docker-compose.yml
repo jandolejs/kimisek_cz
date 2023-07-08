@@ -42,3 +42,4 @@ services:
 networks:
     web:
         name: www_kimisek
+        external: true
