@@ -17,7 +17,6 @@ services:
             - "traefik.http.routers.${PROJECT_NAME}.rule=Host(`www.${PROJECT_BASE_URL}`) || Host(`${PROJECT_BASE_URL}`)"
             - "traefik.http.routers.${PROJECT_NAME}.entrypoints=web,websecure"
             - "traefik.http.routers.${PROJECT_NAME}.tls=true"
-            - "traefik.http.routers.${PROJECT_NAME}.tls.certresolver=myresolver"
             - "traefik.http.routers.${PROJECT_NAME}.middlewares=${PROJECT_NAME}_https_redirect"
             # Redirect https, www
             - "traefik.http.routers.${PROJECT_NAME}.middlewares=${PROJECT_NAME}_www_redirect"
