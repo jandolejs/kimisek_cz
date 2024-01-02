@@ -44,7 +44,7 @@ services:
 
 networks:
   public:
-    name: other
+    name: www
     external: true
 
 volumes:
