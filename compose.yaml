@@ -22,6 +22,7 @@ services:
       - "traefik.http.middlewares.${PROJECT_NAME}_www_redirect.redirectregex.regex=^(https?)://${PROJECT_BASE_URL}/(.*)$$"
       - "traefik.http.middlewares.${PROJECT_NAME}_www_redirect.redirectregex.replacement=https://www.${PROJECT_BASE_URL}/$${2}"
       - "traefik.http.middlewares.${PROJECT_NAME}_www_redirect.redirectregex.permanent=true"
+
 networks:
   public:
     name: www
