@@ -12,8 +12,6 @@ services:
       - /code/node_modules
     networks:
       - public
-    depends_on:
-      - backend
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.s_${PROJECT_NAME}.loadbalancer.server.port=3000"
@@ -24,24 +22,6 @@ services:
       - "traefik.http.middlewares.${PROJECT_NAME}_www_redirect.redirectregex.regex=^(https?)://${PROJECT_BASE_URL}/(.*)$$"
       - "traefik.http.middlewares.${PROJECT_NAME}_www_redirect.redirectregex.replacement=https://www.${PROJECT_BASE_URL}/$${2}"
       - "traefik.http.middlewares.${PROJECT_NAME}_www_redirect.redirectregex.permanent=true"
-
-  backend:
-    build:
-      args:
-      - NODE_ENV=development
-      context: backend
-      target: development
-    command: npm run start-watch
-    environment:
-      - NODE_ENV=development
-    volumes:
-      - ./backend/src:/code/src:ro
-      - ./backend/package.json:/code/package.json
-      - ./backend/package-lock.json:/code/package-lock.json
-      - back-notused:/opt/app/node_modules
-    networks:
-      - public
-
 networks:
   public:
     name: www
